@@ -21,6 +21,7 @@ services:
       - ALLOW_AXFR_IPS=0.0.0.0/0
       - DISABLE_AXFR=no
       - MASTER=yes
+      - DEFAULT_SOA_NAME=401.jp
     links:
       - pdns-db
   admin-db:
@@ -36,6 +37,7 @@ services:
       - DATABASE_URI=mysql://pdns:pdns@admin-db/pdns
       - PDNS_STATS_URL=http://pdns:8081
       - PDNS_API_KEY=secret
+      - SIGNUP_ENABLED=no
     links:
       - pdns
       - admin-db
