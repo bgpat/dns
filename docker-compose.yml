@@ -18,12 +18,13 @@ services:
       - WEBSERVER=yes
       - API=yes
       - API_KEY=secret
-      - ALLOW_AXFR_IPS=0.0.0.0/0
-      - DISABLE_AXFR=no
       - MASTER=yes
       - DEFAULT_SOA_NAME=401.jp
     links:
       - pdns-db
+    ports:
+      - "53:53"
+      - "53:53/udp"
   admin-db:
     image: mariadb:10.1
     environment:
@@ -43,12 +44,3 @@ services:
       - admin-db
     ports:
       - "127.0.0.1:9393:9393"
-  nsd:
-    image: bgpat/nsd-slave:latest
-    environment:
-      - MASTER_HOST=pdns
-    links:
-      - pdns
-    ports:
-      - "53:53"
-      - "53:53/udp"
