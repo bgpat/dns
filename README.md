@@ -4,5 +4,5 @@
 
 ```bash
 docker-compose up -d
-docker-compose restart admin
+docker-compose restart pdns admin
 ```
